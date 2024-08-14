@@ -1,0 +1,24 @@
+Hello Anonymus
+I really need your help
+I was creating a site to encrypt a file but it went horribly wrong and i have no idea what to do 
+Writen down was the original plan of how i wanted to create, please help me I am stuck forever
+
+ok so this website is going to be very complex so I will divide it in parts
+1. The user will be given two options first, if he wants to encrypt a text and 2nd if he wants to encrypt a file(mainly documents for now, we will think of universal files later)
+2. if user selects 2nd option then the following process should be done
+3. extract the file name and then encrypt it into 256 AES encryption, here are the requirements:
+	Cipher mode of encryption will be GCM
+	The tag len(length of the authentication tag produced by GCM) should be 128
+	key size in bits should be 256
+	and a random password(secret key) will be generated and will be given to the user to copy the password, and as you know for 256 the secret key length is 32 characters, so fix the length to 32 only and make sure it don't exceed that limit
+4. now that we have the aes encrypted text we will translate it into binary code UTF-16
+5. Now that we have UTF-16 binary code we will use transposition cipher and another thing that use the extracted file name in place of key/permutation while performing transposition cipher
+6. Now we have the transposition cipher text we will convert it into base64 and these should be mandatory:
+	Standard-PEM
+	Encoding-UTF-8
+	Output-Data URI
+7. Now we have base64 output as datauri we will compress it like you know about base64 Gzip compress and we will compress it 3 times, and from 3 times I mean that when first compressed we will get the output and then we will again compress that output then will get another output(name output2) and then we will again compress the output2 and then the final output(name o3 for convenience) we have to take
+8. Now we have final output that is o3, we will again input it in aes 256 encryption and requirements are as before and make sure to use the same key and was generated last time as secret key again
+9. Now we again have aes encryted text, use that text as the password for the file and also give that password to user, if possible then apply that text as password in the file and return it to user to download the protected file and also show user the password that you put on the file
+
+If you find anything complex in here, make sure to ask me to make everything clear and also we will be using html, css and javascript, but if you want to use any other language with them you are free
